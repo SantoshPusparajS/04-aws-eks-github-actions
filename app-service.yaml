@@ -1,0 +1,12 @@
+apiVersion:
+kind: Service
+metadata:
+  name: application-service
+spec:
+  selector:
+    app: server-application
+  type: NodePort
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30007
