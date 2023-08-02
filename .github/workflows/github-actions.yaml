@@ -37,6 +37,10 @@ jobs:
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
+      - name: Update kube-config file to use current cluster as context
+        run: |
+          aws eks update-kubeconfig --name GithubActionsCluster
+
       - name: Deploying the manifest file to EKS
         run: |
           kubectl apply -f app-deployment.yaml
