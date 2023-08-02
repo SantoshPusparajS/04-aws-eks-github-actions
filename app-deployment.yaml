@@ -6,7 +6,8 @@ metadata:
     app: server-application
 spec:
   replicas: 2
-  strategy: RollingUpdate
+  strategy:
+    type: RollingUpdate
   selector:
     matchLabels:
       app: server-application
@@ -17,8 +18,8 @@ spec:
     spec:
       containers:
         - name: server-container
-          image:
+          image: 022071580777.dkr.ecr.us-east-1.amazonaws.com/developmentproject:latest
           ports:
-            - name: containerPort
-              port: 3000
+            - name: server-port
+              containerPort: 3000
               protocol: TCP
